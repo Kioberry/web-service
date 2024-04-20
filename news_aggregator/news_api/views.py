@@ -11,9 +11,10 @@ import datetime
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db.utils import IntegrityError
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
-
+@csrf_exempt
 @require_http_methods(['POST'])# ensure that this view can only be called by POST request
 def login_view(request):
     username = request.POST.get('username')
